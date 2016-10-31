@@ -1,7 +1,7 @@
 #include "file.hpp"
 
 File &File::open(const std::string &file) {
-    char buffer[4096];
+    char buffer[1024 * 256];
 
     std::ifstream *handle = new std::ifstream;
     handle->rdbuf()->pubsetbuf(buffer, sizeof buffer);
