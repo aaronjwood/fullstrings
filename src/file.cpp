@@ -15,3 +15,7 @@ File &File::getSize() {
 
     return *this;
 }
+
+File::~File() {
+    delete File::handle;
+}

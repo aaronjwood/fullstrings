@@ -10,8 +10,11 @@ private:
 protected:
     std::ifstream *handle;
     std::ifstream::pos_type size;
-    
+
     virtual File &open(const std::string &file);
+
+public:
+    virtual ~File();
 };
 
 #endif //FULLSTRINGS_FILE_HPP
