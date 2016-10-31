@@ -1,7 +1,12 @@
 #include "file.hpp"
 
 File &File::open(const std::string &file) {
-    std::ifstream *handle = new std::ifstream(file, std::ios::ate | std::ios::binary);
+    char buffer[4096];
+
+    std::ifstream *handle = new std::ifstream;
+    handle->rdbuf()->pubsetbuf(buffer, sizeof buffer);
+
+    handle->open(file, std::ios::ate | std::ios::binary);
     File::handle = handle;
 
     File::getSize();
