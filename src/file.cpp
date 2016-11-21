@@ -7,20 +7,20 @@ File &File::open(const std::string &file) {
     handle->rdbuf()->pubsetbuf(buffer, sizeof buffer);
 
     handle->open(file, std::ios::ate | std::ios::binary);
-    File::handle = handle;
+    this->handle = handle;
 
-    File::getSize();
+    this->getSize();
 
     return *this;
 }
 
 File &File::getSize() {
-    File::size = File::handle->tellg();
-    File::handle->seekg(0, File::handle->beg);
+    this->size = this->handle->tellg();
+    this->handle->seekg(0, this->handle->beg);
 
     return *this;
 }
 
 File::~File() {
-    delete File::handle;
+    delete this->handle;
 }
